@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>謎解き</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<h1>謎解き</h1>
+
+<p>ミステリアスな謎解きサイト</p>
+
+<button onclick="startGame()">
+START
+</button>
+
+<br><br>
+
+<button onclick="continueGame()">
+続きから
+</button>
+
+<br><br>
+
+<button
+onclick="location.href='history.html'">
+解いた問題を見る
+</button>
+
+<script>
+
+function startGame(){
+
+    localStorage.clear();
+
+    localStorage.setItem(
+        "currentPuzzle",
+        1
+    );
+
+    location.href =
+    "puzzle.html?id=1";
+
+}
+
+function continueGame(){
+
+    const saved =
+        localStorage.getItem(
+            "currentPuzzle"
+        );
+
+    if(saved){
+
+        location.href =
+            "puzzle.html?id=" + saved;
+
+    }else{
+
+        location.href =
+            "puzzle.html?id=1";
+
+    }
+
+}
+
+</script>
+</body>
+</html>

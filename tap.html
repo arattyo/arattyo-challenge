@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<title>最終問題</title>
+
+<style>
+
+#container{
+    position:relative;
+    display:inline-block;
+}
+
+#finalImage{
+    max-width:95%;
+}
+
+#secretArea{
+    position:absolute;
+
+    right:20px;
+    bottom:20px;
+
+    width:140px;
+    height:140px;
+
+    cursor:pointer;
+
+    background:rgba(255,0,0,0);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>最終問題</h1>
+
+<div id="container">
+
+<img
+src="images/q6.png"
+id="finalImage">
+
+<div id="secretArea"></div>
+
+</div>
+
+<br><br>
+
+<input
+id="answer"
+type="text"
+placeholder="答えを入力">
+
+<br><br>
+
+<button onclick="checkAnswer()">
+回答
+</button>
+
+<button onclick="showHint()">
+ヒント
+</button>
+
+<button onclick="location.href='history.html'">
+振り返る
+</button>
+
+<p id="hint"></p>
+
+<p id="result"></p>
+
+<script>
+
+let tapCount = 0;
+
+document
+.getElementById("secretArea")
+.addEventListener(
+    "click",
+    () => {
+
+        tapCount++;
+
+        if(tapCount >= 3){
+
+            location.href =
+                "clear.html";
+
+        }
+
+    }
+);
+
+function showHint(){
+
+    document
+    .getElementById("hint")
+    .innerHTML =
+        "これまでの問題の左上の絵と答えに注目してみよう。";
+
+}
+
+function checkAnswer(){
+
+    document
+    .getElementById("result")
+    .innerHTML =
+        "❌ 不正解";
+
+    document
+    .getElementById("result")
+    .style.color =
+        "#ff5555";
+
+}
+
+</script>
+
+</body>
+</html>

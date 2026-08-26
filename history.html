@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>解いた問題</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+</head>
+
+<body>
+
+<h1>解いた問題</h1>
+
+<div id="history"></div>
+
+<script>
+
+const SHEET_URL =
+"https://script.google.com/macros/s/AKfycbypGDBNbjmi-hHmGaoxRuYjgR3rI_ZvpJxEfLR_aSov3z2wELMzkeeuZtGWINjDFgD4/exec";
+
+const currentPuzzle =
+Number(
+    localStorage.getItem(
+        "currentPuzzle"
+    ) || 1
+);
+
+console.log(
+    "currentPuzzle =",
+    currentPuzzle
+);
+fetch(SHEET_URL)
+.then(response => response.json())
+.then(questions => {
+
+    const historyDiv =
+    document.getElementById(
+        "history"
+    );
+
+    questions.forEach(question => {
+
+        if(
+            question.id
+            < currentPuzzle
+        ){
+
+            historyDiv.innerHTML += `
+
+            <hr>
+
+            <h2>${question.title}</h2>
+
+            <img
+            src="${question.image}"
+            width="500"
+            style="max-width:90%;">
+
+            <p>
+            答え：
+            ${question.answers[0]}
+            </p>
+
+            `;
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
