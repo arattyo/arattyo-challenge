@@ -33,8 +33,12 @@ placeholder="答えを入力">
 回答
 </button>
 
-<button onclick="showHint()">
-ヒント
+<button onclick="showHint1()">
+ヒント1
+</button>
+
+<button onclick="showHint2()">
+ヒント2
 </button>
 
 <button onclick="location.href='history.html'">
@@ -82,11 +86,21 @@ fetch(SHEET_URL)
         currentQuestion.image;
 
 });
-function showHint(){
+function showHint1(){
 
-    document.getElementById("hint")
-        .innerHTML =
-        currentQuestion.hint;
+    document
+    .getElementById("hint")
+    .innerHTML =
+        currentQuestion.hint1;
+
+}
+
+function showHint2(){
+
+    document
+    .getElementById("hint")
+    .innerHTML =
+        currentQuestion.hint2;
 
 }
 
